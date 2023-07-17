@@ -36,9 +36,12 @@ Función principal del proceso.
 Function ExecuteCopy {
     $Result = [System.Windows.MessageBox]::Show($MessageBody, $MessageTitle, $ButtonType, $MessageIcon)
     if ($Result -eq "Yes") {
-        $source = SourceFolder
-        $endpoint = DestinationFolder
-        $log = LogFolder
+        SourceFolder
+        $source = GetFolder
+        DestinationFolder
+        $endpoint = GetFolder
+        LogFolder
+        $log = GetFolder
         <#
         .LINK
         Para más información consulte 
@@ -55,9 +58,7 @@ Función para obtener la carpeta fuente del proceso.
 #>
 Function SourceFolder() {
     $SourceMessage = "Selecciona la carpeta a copiar"
-    $source
-    [System.Windows.MessageBox]::Show($SourceMessage, $MessageTitle, $ButtonType, 'Information')
-    return $source = GetFolder
+    return [System.Windows.MessageBox]::Show($SourceMessage, $MessageTitle, $ButtonType, 'Information')
 }
 
 <#
@@ -66,9 +67,7 @@ Función para obtener la carpeta destino del proceso.
 #>
 Function DestinationFolder() {
     $DestinationMessage = "Ahora selecciona a donde se va a copiar la informacion"
-    $destination
-    [System.Windows.MessageBox]::Show($DestinationMessage, $MessageTitle, $ButtonType, 'Information')
-    return $destination = GetFolder
+    return [System.Windows.MessageBox]::Show($DestinationMessage, $MessageTitle, $ButtonType, 'Information')
 }
 
 <#
@@ -77,9 +76,7 @@ Función para obtener la carpeta donde se almacenará el registro del proceso.
 #>
 Function LogFolder() {
     $LogMessage = "El script genera un archivo de registro para cotejar resultados. Indica en donde se almacenara"
-    $log
-    [System.Windows.MessageBox]::Show($LogMessage, $MessageTitle, $ButtonType, 'Information')
-    return $log = GetFolder
+    return [System.Windows.MessageBox]::Show($LogMessage, $MessageTitle, $ButtonType, 'Information')
 }
 
 <#
